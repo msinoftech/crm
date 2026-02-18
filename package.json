@@ -1,0 +1,27 @@
+{
+  "name": "crm-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:superadmin": "dotenv -e .env.local -- yarn workspace superadmin dev",
+    "dev:workspace": "dotenv -e .env.local -- yarn workspace workspace dev",
+    "build:superadmin": "dotenv -e .env.local -- yarn workspace superadmin build",
+    "build:workspace": "dotenv -e .env.local -- yarn workspace workspace build",
+    "build": "dotenv -e .env.local -- yarn workspace superadmin build && yarn workspace workspace build",
+    "lint": "yarn workspaces run lint",
+    "test": "yarn workspace @crm/shared test",
+    "create-superadmin": "node scripts/create-superadmin.cjs"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.47.0",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
